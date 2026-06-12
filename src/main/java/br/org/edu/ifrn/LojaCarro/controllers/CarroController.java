@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/carro")
 public class CarroController {
@@ -18,8 +20,8 @@ public class CarroController {
     private CarroService carroService;
 
     // Salvar carro (corrigido para POST)
-    @PostMapping("salvar")
-    public ResponseEntity<Carro> salvarCarro(@RequestBody Carro c) {
+    @PostMapping
+    public ResponseEntity<Carro> salvarCarro(@Valid @RequestBody Carro c) {
         Carro savedCarro = carroService.save(c);
         return ResponseEntity.ok(savedCarro);
     }
