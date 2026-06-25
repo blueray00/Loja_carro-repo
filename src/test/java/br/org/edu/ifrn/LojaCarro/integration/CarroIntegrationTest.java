@@ -13,9 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(classes = LojaCarroApplication.class)
 @Transactional
+@ActiveProfiles("test")
+
 class CarroIntegrationTest {
 
     @Autowired
