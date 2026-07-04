@@ -19,8 +19,10 @@ import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
 @WebMvcTest(CarroController.class)
+@AutoConfigureMockMvc(addFilters = false)
 @Import(br.org.edu.ifrn.LojaCarro.security.SecurityConfig.class)
 class CarroControllerTest {
 
@@ -34,7 +36,7 @@ class CarroControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "gerente", roles = "GERENTE")
     void deveListarTodos() throws Exception {
         Carro carro = new Carro();
         carro.setId(1L);
@@ -48,7 +50,7 @@ class CarroControllerTest {
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "gerente", roles = "GERENTE")
     void deveBuscarPorId() throws Exception {
         Carro carro = new Carro();
         carro.setId(1L);
@@ -62,7 +64,7 @@ class CarroControllerTest {
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "gerente", roles = "GERENTE")
     void deveSalvarCarro() throws Exception {
         Carro carro = new Carro();
         carro.setId(1L);
@@ -78,7 +80,7 @@ class CarroControllerTest {
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "gerente", roles = "GERENTE")
     void deveAtualizarCarro() throws Exception {
         Carro carro = new Carro();
         carro.setId(1L);
@@ -94,7 +96,7 @@ class CarroControllerTest {
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "gerente", roles = "GERENTE")
     void deveDeletarCarro() throws Exception {
         mockMvc.perform(delete("/carro/1"))
                 .andExpect(status().isNoContent());

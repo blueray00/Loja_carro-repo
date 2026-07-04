@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LojaCarro - Sistema</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <h2>LojaCarro</h2>
+    </div>
+
+    <div class="usuario">
+
+        <span id="usuarioLogado"></span>
+
+        <button id="logout" class="btn-logout">
+            Sair
+        </button>
+
+    </div>
+
+</header>
+
+<main class="container">
+
+    <section class="card">
+
+        <h2>Cadastro de Carros</h2>
+
+        <form id="carroForm">
+
+            <input
+                    type="hidden"
+                    id="id">
+
+            <div class="campo">
+
+                <label>Modelo</label>
+
+                <input
+                        id="modelo"
+                        type="text"
+                        placeholder="Ex.: Corolla"
+                        required>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Ano</label>
+
+                <input
+                        id="ano"
+                        type="number"
+                        min="1886"
+                        max="2100"
+                        placeholder="2025"
+                        required>
+
+            </div>
+
+            <div class="acoes-form">
+
+                <button
+                        type="submit"
+                        class="btn-primary">
+
+                    Salvar
+
+                </button>
+
+                <button
+                        type="button"
+                        id="cancelar"
+                        class="btn-secondary">
+
+                    Cancelar
+
+                </button>
+
+            </div>
+
+        </form>
+
+        <div id="mensagem" class="mensagem"></div>
+
+    </section>
+
+    <section class="card">
+
+        <div class="titulo-tabela">
+
+            <h2>Carros Cadastrados</h2>
+
+            <button
+                    id="recarregar"
+                    class="btn-refresh">
+
+                Atualizar
+
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Ações</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="tabelaCarros">
+
+            <tr>
+
+                <td colspan="4">
+                    Carregando...
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
